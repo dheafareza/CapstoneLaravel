@@ -121,53 +121,45 @@
   <li class="nav-heading ">Transaksi</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pendapatans">
+    <a class="nav-link collapsed" href="pemasukan">
       <i class="bi bi-arrow-up"></i>
       <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Pendapatan</span>
     </a>
   </li><!-- End Profile Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-faq.html">
-      <i class="bi bi-question-circle"></i>
-      <span>F.A.Q</span>
+    <a class="nav-link collapsed" href="pengeluaran">
+      <i class="bi bi-arrow-down"></i>
+      <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Pengeluaran</span>
     </a>
   </li><!-- End F.A.Q Page Nav -->
+  <ul class="nav flex-column mt-3 border-bottom"></ul>
+
+  <li class="nav-heading ">KARYAWAN</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-contact.html">
-      <i class="bi bi-envelope"></i>
-      <span>Contact</span>
+    <a class="nav-link collapsed" href="karyawan">
+      <i class="bi bi-people-fill"></i>
+      <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Karyawan</span>
     </a>
   </li><!-- End Contact Page Nav -->
+  <ul class="nav flex-column mt-3 border-bottom"></ul>
+
+  <li class="nav-heading ">TAGIHAN</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
-      <i class="bi bi-card-list"></i>
-      <span>Register</span>
+    <a class="nav-link collapsed" href="hutang">
+      <i class="bi bi-bar-chart-fill"></i>
+      <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Hutang</span>
     </a>
   </li><!-- End Register Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-login.html">
-      <i class="bi bi-box-arrow-in-right"></i>
-      <span>Login</span>
+    <a class="nav-link collapsed" href="laporan">
+      <i class="bi bi-table"></i>
+      <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Laporan</span>
     </a>
   </li><!-- End Login Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-error-404.html">
-      <i class="bi bi-dash-circle"></i>
-      <span>Error 404</span>
-    </a>
-  </li><!-- End Error 404 Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
-      <i class="bi bi-file-earmark"></i>
-      <span>Blank</span>
-    </a>
-  </li><!-- End Blank Page Nav -->
 
   <div class="toggle-sidebar-btn">
 <i class="bi bi-chevron-left" id="sidebarToggle"></i>
