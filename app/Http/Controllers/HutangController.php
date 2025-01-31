@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hutang;
+use App\Models\Pemasukan;
+use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HutangController extends Controller
 {
@@ -12,8 +15,25 @@ class HutangController extends Controller
      */
     public function index()
     {
+        // Total pemasukan dan pengeluaran
+        $jumlahmasuk = Pemasukan::sum('jumlah');
+        $jumlahkeluar = Pengeluaran::sum('jumlah');
+
+        // Sisa uang
+        $uang = $jumlahmasuk - $jumlahkeluar;
+
+        // Data untuk chart area (7 hari terakhir)
+        $chartData = [];
+        for ($i = 0; $i < 7; $i++) {
+            $date = Carbon::today()->subDays($i);
+            $chartData[] = Pemasukan::whereDate('tgl_pemasukan', $date)->sum('jumlah');
+        }
+
         $hutang = Hutang::all(); // Mengambil semua data hutang
-        return view('hutang.index', compact('hutang'));
+        return view('hutang.index', compact('hutang',  'jumlahmasuk',
+        'jumlahkeluar',
+        'uang',
+        'chartData'));
     }
 
     /**

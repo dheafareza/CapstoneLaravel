@@ -36,7 +36,7 @@
 
         <div class="mb-3">
             <label for="id_sumber_pemasukan" class="form-label">Sumber Pemasukan</label>
-            <select id="id_sumber_pemasukan" name="id_sumber_pemasukan" class="form-control" required>
+            <select id="id_sumber_pemasukan" name="id_sumber_pemasukan" class="form-select" required>
             @foreach ($sumberPemasukan as $sumber)
             <option value="{{ $sumber->id }}" 
                     {{ old('id_sumber_pemasukan', $pemasukan->id_sumber_pemasukan) == $sumber->id ? 'selected' : '' }}>

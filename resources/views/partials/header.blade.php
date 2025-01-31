@@ -4,8 +4,11 @@
 <!-- End Logo -->
 
 <div class="welcome-message">
-    <!-- <form class="search-form d-flex align-items-center"></form> -->
-    <h4>Selamat Datang, <?php echo isset($_SESSION['nama']) ? htmlspecialchars($_SESSION['nama'], ENT_QUOTES, 'UTF-8') : 'Tamu'; ?></h4>
+    @if (request()->is('/'))
+        <h4>Selamat Datang, {{ Auth::user()->name ?? 'Tamu' }}</h4>
+    @else
+        <h4>Sistem Informasi Keuangan</h4>
+    @endif
 </div>
 
 <nav class="header-nav ms-auto">

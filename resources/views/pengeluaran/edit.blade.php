@@ -36,7 +36,7 @@
 
         <div class="mb-3">
             <label for="id_sumber_pengeluaran" class="form-label">Sumber Pengeluaran</label>
-            <select id="id_sumber_pengeluaran" name="id_sumber_pengeluaran" class="form-control" required>
+            <select id="id_sumber_pengeluaran" name="id_sumber_pengeluaran" class="form-select" required>
                 <option value="">-- Pilih Sumber --</option>
                 @foreach ($sumberPengeluaran as $sumber)
                 <option value="{{ $sumber->id }}" 

@@ -232,13 +232,14 @@ h6 {
 .card-header,
 .card-footer {
   border-color: #ebeef4;
-  background-color: #fff;
-  color: #798eb3;
+  background-color: rgba(219, 216, 216, 0.267);
+  color: #012970;
+  font-weight: 700;
   padding: 15px;
 }
 
 .card-title {
-  padding: 20px 0 15px 0;
+  padding: 5px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
   color: #012970;
@@ -845,14 +846,23 @@ h6 {
 
 /* Info Cards */
 .dashboard .info-card {
-  padding-bottom: 100px;
+  padding-bottom: 4px;
+  padding: 0;
 }
 
 .dashboard .info-card h6 {
-  font-size: 28px;
+  font-size: 20px;
   color: #012970;
   font-weight: 700;
   margin: 0;
+  padding: 0;
+}
+
+.dashboard .info-card h6-i {
+  font-size: 40px;
+  color: #012970;
+  font-weight: 700;
+  margin: 10px;
   padding: 0;
 }
 
@@ -863,6 +873,7 @@ h6 {
   height: 64px;
   flex-shrink: 0;
   flex-grow: 0;
+  margin-top: 10px;
 }
 
 .dashboard .sales-card .card-icon {
@@ -876,8 +887,13 @@ h6 {
 }
 
 .dashboard .customers-card .card-icon {
-  color: #ff771d;
-  background: #ffecdf;
+  color: rgb(54, 185, 260);
+  background: #faf0ea;
+}
+
+.dashboard .karyawan-card .card-icon {
+  color: rgb(248, 249, 252);
+  background: rgb(78, 115, 223);
 }
 
 /* Activity */

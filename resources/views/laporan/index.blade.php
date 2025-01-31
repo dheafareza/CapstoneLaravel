@@ -23,23 +23,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Pemasukan</td>
-                            <td>{{ $totalTransaksiMasuk }}</td>
-                            <td>Rp. {{ number_format($jumlahMasuk, 0, ',', '.') }}</td>
-                            <td>
-                                <a href="{{ route('laporan.export-pemasukan') }}" class="btn btn-primary btn-md">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Pemasukan</td>
+                        <td>{{ $totalTransaksiMasuk }}</td>
+                        <td>Rp. {{ number_format($jumlahMasuk, 0, ',', '.') }}</td>
+                        <td>
+                            <!-- Tombol Export Excel -->
+                            <a href="{{ route('laporan.export-pemasukan') }}" class="btn btn-success">
+                                <i class="bi bi-file-earmark-excel"></i> Export Excel
+                            </a>
+                            <!-- Tombol Export PDF -->
+                            <a href="{{ url('/export-pemasukan-pdf') }}" class="btn btn-danger btn-md">
+                                <i class="bi bi-file-earmark-pdf"></i> Export PDF
+                            </a>
+                        </td>
+                    </tr>
                         <tr>
                             <td>Pengeluaran</td>
                             <td>{{ $totalTransaksiKeluar }}</td>
                             <td>Rp. {{ number_format($jumlahKeluar, 0, ',', '.') }}</td>
                             <td>
-                                <a href="{{ route('laporan.export-pengeluaran') }}" class="btn btn-primary btn-md">
-                                    <i class="bi bi-download"></i>
+                                <a href="{{ route('laporan.export-pengeluaran') }}" class="btn btn-success">
+                                <i class="bi bi-file-earmark-excel"></i> Export Excel
+                                </a>
+                                <a href="{{ url('/export-pengeluaran-pdf') }}" class="btn btn-danger btn-md">
+                                    <i class="bi bi-file-earmark-pdf"></i> Export PDF
                                 </a>
                             </td>
                         </tr>

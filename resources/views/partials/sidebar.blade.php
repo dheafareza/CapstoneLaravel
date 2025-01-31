@@ -160,6 +160,16 @@
       <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Laporan</span>
     </a>
   </li><!-- End Login Page Nav -->
+  <ul class="nav flex-column mt-3 border-bottom"></ul>
+
+  <li class="nav-heading ">Barang</li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="stok_barang">
+      <i class="bi bi-bag-check-fill"></i>
+      <span style="font-size: 12px; font-family: 'Poppins', sans-serif;">Stok Barang</span>
+    </a>
+  </li><!-- End Login Page Nav -->
 
   <div class="toggle-sidebar-btn">
 <i class="bi bi-chevron-left" id="sidebarToggle"></i>

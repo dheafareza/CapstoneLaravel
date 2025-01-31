@@ -15,18 +15,43 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $pemasukan = Pemasukan::with('sumberPemasukan')->get(); // Mengambil semua data pemasukan beserta sumbernya
-        return view('pemasukan.index', compact('pemasukan'));
+        // Dapatkan data semua sumber pemasukan
+        $sumberPemasukan= SumberPemasukan::all()->map(function ($sumber) {
+            $total = Pemasukan::where('id_sumber_pemasukan', $sumber->id)->sum('jumlah');
+            $jumlahTransaksi = Pemasukan::where('id_sumber_pemasukan', $sumber->id)->count();
+            $totalKeseluruhan = Pemasukan::sum('jumlah');
+            $persentase = $totalKeseluruhan > 0 ? ($total / $totalKeseluruhan) * 100 : 0;
+
+            // Tentukan warna progress bar berdasarkan ID sumber
+            $warna = match ($sumber->id) {
+                1 => 'bg-danger',   // Warna merah
+                2 => 'bg-warning',  // Warna kuning
+                3 => 'bg-info',     // Warna biru muda
+                4 => 'bg-primary',  // Warna biru
+                5 => 'bg-success',  // Warna hijau
+                default => 'bg-secondary', // Default warna abu-abu
+            };
+
+            return [
+                'nama' => $sumber->nama,
+                'total' => $total,
+                'jumlah_transaksi' => $jumlahTransaksi,
+                'persentase' => round($persentase, 2),
+                'warna' => $warna,
+            ];
+        });
+
+        // Ambil semua data pemasukan untuk tabel
+        $pemasukan = Pemasukan::all();
+
+        return view('pemasukan.index', compact('sumberPemasukan', 'pemasukan'));
     }
 
-    /**
-     * Menampilkan form untuk menambahkan pemasukan baru.
-     */
     public function create()
-{
-    $sumberPemasukan = SumberPemasukan::all(); // Ambil data sumber pemasukan
-    return view('pemasukan.create', compact('sumberPemasukan'));
-}
+    {
+        $sumberPemasukan = SumberPemasukan::all(); // Mengambil semua data sumber pemasukan untuk dropdown
+        return view('pemasukan.create', compact('sumberPemasukan'));
+    }
 
 
     /**

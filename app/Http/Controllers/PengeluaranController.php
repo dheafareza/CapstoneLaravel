@@ -13,8 +13,33 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        $pengeluaran = Pengeluaran::with('sumberPengeluaran')->get(); // Mengambil semua data pengeluaran beserta sumbernya
-        return view('pengeluaran.index', compact('pengeluaran'));
+        // Dapatkan data semua sumber pengeluaran
+        $sumberPengeluaran= SumberPengeluaran::all()->map(function ($sumber) {
+            $total = Pengeluaran::where('id_sumber_pengeluaran', $sumber->id)->sum('jumlah');
+            $jumlahTransaksi = Pengeluaran::where('id_sumber_pengeluaran', $sumber->id)->count();
+            $totalKeseluruhan = Pengeluaran::sum('jumlah');
+            $persentase = $totalKeseluruhan > 0 ? ($total / $totalKeseluruhan) * 100 : 0;
+
+            // Tentukan warna progress bar berdasarkan ID sumber
+            $warna = match ($sumber->id) {
+                1 => 'bg-danger',   // Warna merah
+                2 => 'bg-warning',  // Warna kuning
+                3 => 'bg-info',     // Warna biru muda
+                4 => 'bg-primary',  // Warna biru
+                5 => 'bg-success',  // Warna hijau
+                default => 'bg-secondary', // Default warna abu-abu
+            };
+
+            return [
+                'nama' => $sumber->nama,
+                'total' => $total,
+                'jumlah_transaksi' => $jumlahTransaksi,
+                'persentase' => round($persentase, 2),
+                'warna' => $warna,
+            ];
+        });
+        $pengeluaran = Pengeluaran::all(); // Mengambil semua data pengeluaran beserta sumbernya
+        return view('pengeluaran.index', compact('sumberPengeluaran', 'pengeluaran'));
     }
 
     /**

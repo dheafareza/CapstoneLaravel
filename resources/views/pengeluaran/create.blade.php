@@ -18,6 +18,10 @@
     @endif
     
     <!-- Form Tambah Pengeluaran -->
+    <div class="col-lg-5 col-md-6 mb-4 custom-width">
+    <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">Tambah Pengeluaran</h5>
     <form id="formPengeluaran" action="{{ route('pengeluaran.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
@@ -32,7 +36,7 @@
 
                     <div class="form-group mb-3">
                         <label for="id_sumber_pengeluaran">Sumber Pengeluaran</label>
-                        <select id="id_sumber_pengeluaran" name="id_sumber_pengeluaran" class="form-control" required>
+                        <select id="id_sumber_pengeluaran" name="id_sumber_pengeluaran" class="form-select" required>
                             <option value="">-- Pilih Sumber --</option>
                             @foreach ($sumberPengeluaran as $sumber)
                                 <option value="{{ $sumber->id }}" {{ old('id_sumber_pengeluaran') == $sumber->id ? 'selected' : '' }}>
@@ -52,5 +56,11 @@
         </div>
     </div>
 </div>
-</div>
+<style>
+.custom-width {
+    width: 70%; 
+    padding-bottom: 90px;
+    height: 70%;
+}
+</style>
 @endsection

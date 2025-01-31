@@ -34,11 +34,11 @@ class LaporanController extends Controller
 
     public function exportPemasukan()
 {
-    return Excel::download(new PemasukanExport, 'pemasukan.xlsx');
+    return Excel::download(new PemasukanExport, 'Data_Pemasukan.xlsx');
 }
 
 public function exportPengeluaran()
 {
-    return Excel::download(new PengeluaranExport, 'pengeluaran.xlsx');
+    return Excel::download(new PengeluaranExport, 'Data_Pengeluaran.xlsx');
 }
 }
