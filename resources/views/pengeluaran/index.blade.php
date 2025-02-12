@@ -15,34 +15,43 @@
     
     <!-- Sumber Pengeluaran -->
     <div class="col-lg-5 col-md-6 mb-4 custom-width">
-        <div class="card shadow mb-4">
-            <div class="card-header">Sumber Pengeluaran</div>
-            <div class="card-body">
-                @foreach ($sumberPengeluaran as $sumber)
-                    <h4 class="h4">
-                        {{ $sumber['nama'] }}
-                        <span class="float-right">Rp. {{ number_format($sumber['total'], 0, ',', '.') }}</span>
-                    </h4>
-                    <div class="progress mt-3" style="height: 20px;">
-                        <div class="progress-bar progress-bar-striped {{ $sumber['warna'] }}" role="progressbar" 
-                            style="width: {{ $sumber['persentase'] }}%" 
-                            aria-valuenow="{{ $sumber['persentase'] }}" 
-                            aria-valuemin="0" 
-                            aria-valuemax="100">
-                            <strong>{{ $sumber['jumlah_transaksi'] }} Kali</strong>
-                        </div>
+    <div class="card shadow mb-4">
+        <div class="card-header">Sumber Pengeluaran</div>
+        <div class="card-body">
+            @foreach ($sumberPengeluaran as $sumber)
+                <h4 class="h4">
+                    {{ $sumber['nama'] }}
+                    <span class="float-right">Rp. {{ number_format($sumber['total'], 0, ',', '.') }}</span>
+                </h4>
+                <div class="progress" style="height: 18px;">
+                    <div class="progress-bar progress-bar-striped {{ $sumber['warna'] }}" role="progressbar" 
+                        style="width: {{ $sumber['persentase'] }}%" 
+                        aria-valuenow="{{ $sumber['persentase'] }}" 
+                        aria-valuemin="0" 
+                        aria-valuemax="100">
+                        <strong>{{ $sumber['jumlah_transaksi'] }} Kali</strong>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
+</div>
 
-    <style>
-    .custom-width {
-        width: 50%; 
-        padding-bottom: 20px;
-    }
-    </style>
+<style>
+.custom-width {
+    width: 50%; 
+    padding-bottom: 20px;
+}
+.card-body h4 {
+    font-size: 14px;
+    margin-bottom: 8px; /* Tambahkan jarak */
+}
+.progress {
+    height: 18px;
+    margin-top: 10px; /* Jarak ke elemen atas */
+    margin-bottom: 10px; /* Jarak ke elemen bawah */
+}
+</style>
 
     <!-- Tombol Tambah Pengeluaran -->
     <div class="mb-3">

@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $item)
+            @foreach($stok_barang as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->kode_barang }}</td>

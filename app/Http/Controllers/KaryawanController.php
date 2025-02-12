@@ -34,7 +34,7 @@ class KaryawanController extends Controller
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'umur' => 'required|integer|min:0|max:150',
-            'email' => 'required|email|unique:karyawan,email',
+            'email' => 'required|email|unique:karyawans,email',
             'no_telp' => 'required|string|max:15',
             'alamat' => 'required|string',
         ]);
@@ -74,7 +74,7 @@ class KaryawanController extends Controller
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'umur' => 'required|integer|min:0|max:150',
-            'email' => 'required|email|unique:karyawan,email,' . $id,
+            'email' => 'required|email|unique:karyawans,email,' . $id,
             'no_telp' => 'required|string|max:15',
             'alamat' => 'required|string',
         ]);

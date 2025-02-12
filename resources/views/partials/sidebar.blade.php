@@ -171,10 +171,20 @@
     </a>
   </li><!-- End Login Page Nav -->
 
-  <div class="toggle-sidebar-btn">
+  <div class="toggle-sidebar-btn" id="sidebarToggle">
 <i class="bi bi-chevron-left" id="sidebarToggle"></i>
 </div>
 
 </ul>
 </aside><!-- End Sidebar-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+
+    sidebarToggle.addEventListener("click", function () {
+      sidebar.classList.toggle("collapsed");
+    });
+  });
+</script>
 

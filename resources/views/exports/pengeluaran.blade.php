@@ -34,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $item)
+            @foreach($pengeluaran as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->tgl_pengeluaran }}</td>

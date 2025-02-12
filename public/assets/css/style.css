@@ -396,6 +396,9 @@ h6 {
 }
 
 .toggle-sidebar-btn {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -405,7 +408,6 @@ h6 {
   justify-content: center;
   cursor: pointer;
   position: relative;
-  
 }
 
 .toggle-sidebar-btn i {
@@ -639,13 +641,46 @@ h6 {
   bottom: 0;
   width: 280px;
   z-index: 1001;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   padding: 20px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
   background-color: rgb(78, 115, 223);
+}
+
+#sidebar.collapsed {
+  width: 60px;
+}
+
+#sidebar.collapsed .nav-heading {
+  display: none;
+}
+
+#sidebar.collapsed span {
+  visibility: hidden;
+  width: 0;
+  transition: visibility 0.3s ease, width 0.3s ease;
+}
+
+#sidebar.collapsed .nav-link {
+  justify-content: center;
+  padding: 10px;
+}
+
+#sidebar.collapsed .nav-link i {
+  font-size: 20px;
+  margin-right: 0;
+}
+
+#main {
+  transition: margin-left 0.3s ease;
+  margin-left: 280px;
+}
+
+#sidebar.collapsed + #main {
+  margin-left: 80px;
 }
 
 @media (max-width: 1199px) {

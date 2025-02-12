@@ -8,19 +8,20 @@ use App\Http\Controllers\StokBarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PemasukanController;
-use App\Exports\PemasukanPDFExport;
-use App\Exports\PengeluaranPDFExport;
-use App\Exports\StokBarangPDFExport;
-use App\Exports\StokBarangExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AdminController;
+
+// Jika user belum login, arahkan ke halaman login
+Route::get('/', function () {
+    if (auth()->guest()) {
+        return redirect()->route('login');
+    }
+    return view('master');
+});
 
 // Route untuk Dashboard
-Route::get('/', function () {
-    return view('master');
-})->middleware('auth');
-
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Route resource untuk Karyawan
 Route::resource('karyawan', KaryawanController::class);
@@ -45,22 +46,11 @@ Route::resource('stok_barang', StokBarangController::class);
 Route::get('/stok-barang/export', [StokBarangController::class, 'export'])->name('stok_barang.export');
 
 // Route untuk Export PDF Laporan
-Route::get('/export-pemasukan-pdf', function () {
-    $exporter = new PemasukanPDFExport();
-    return $exporter->download();
-})->name('laporan.export-pemasukan-pdf');
+Route::get('/export-pemasukan-pdf', [LaporanController::class, 'exportPemasukanPDF'])->name('laporan.export-pemasukan-pdf');
+Route::get('/export-pengeluaran-pdf', [LaporanController::class, 'exportPengeluaranPDF']);
+Route::get('/export-stok-barang-pdf', [StokBarangController::class, 'exportStokBarangPDF']);
 
-Route::get('/export-pengeluaran-pdf', function () {
-    $exporter = new PengeluaranPDFExport();
-    return $exporter->download();
-});
-
-// Route untuk Export PDF Laporan Stok Barang
-Route::get('/export-stok-barang-pdf', function () {
-    $exporter = new StokBarangPDFExport();
-    return $exporter->download();
-});
-
+// Rute Autentikasi
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -68,3 +58,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route resource untuk Admin
+Route::resource('admin', AdminController::class);

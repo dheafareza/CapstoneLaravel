@@ -14,11 +14,9 @@
     @endif
     
     <!-- Sumber Pendapatan -->
-<div class="col-lg-5 col-md-6 mb-4 custom-width">
+    <div class="col-lg-5 col-md-6 mb-4 custom-width">
     <div class="card shadow mb-4">
-        <div class="card-header">Sumber Pendapatan
-            <!-- <h5-i class="card-title">Sumber Pendapatan</h5-i> -->
-        </div>
+        <div class="card-header">Sumber Pendapatan</div>
         <div class="card-body">
             @foreach ($sumberPemasukan as $sumber)
                 <h4 class="h4">
@@ -38,14 +36,21 @@
         </div>
     </div>
 </div>
-
 <style>
 .custom-width {
     width: 50%; 
     padding-bottom: 20px;
 }
+.card-body h4 {
+    font-size: 16px;
+    margin-bottom: 8px; /* Jarak antara teks dan progress bar */
+}
+.progress {
+    height: 20px;
+    margin-top: 10px; /* Jarak dari elemen sebelumnya */
+    margin-bottom: 10px; /* Jika ingin ada jarak di bawah */
+}
 </style>
-
 
     <!-- Tombol Tambah Pemasukan -->
     <div class="mb-3">

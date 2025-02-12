@@ -6,6 +6,7 @@ use App\Models\StokBarang;
 use Illuminate\Http\Request;
 use App\Exports\StokBarangExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class StokBarangController extends Controller
 {
@@ -123,4 +124,13 @@ class StokBarangController extends Controller
     {
         return Excel::download(new StokBarangExport, 'stok_barang.xlsx');
     }
+
+    public function exportStokBarangPDF()
+{
+    $stok_barang = StokBarang::all();
+    
+    $pdf = Pdf::loadView('exports.stok_barang', compact('stok_barang'));
+
+    return $pdf->download('Data_Stok_Barang.pdf');
+}
 }
